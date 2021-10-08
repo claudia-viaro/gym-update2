@@ -126,6 +126,7 @@ class UpdateEnv2(gym.Env):
     
     #define dataset of patients with actionable covariate Xa and non-actionable covariate Xs
     self.patients = truncnorm.rvs(a=0, b= math.inf,size=(self.size,2)) #shape (size, 2), 1st columns is Xs, second is Xa
+    self.state=self.patients
 
     
     
