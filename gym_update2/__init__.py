@@ -4,5 +4,10 @@
 # In[ ]:
 
 
-from gym_update2.envs.update_env2 import UpdateEnv2
+from gym.envs.registration import register
+
+register(
+    id='update2-v0',
+    entry_point='gym_update2.envs:UpdateEnv2',
+)
 
