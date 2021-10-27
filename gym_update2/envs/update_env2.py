@@ -38,7 +38,7 @@ class UpdateEnv2(gym.Env):
     self.thetas = np.array([self.model.intercept_[0], self.model.coef_[0,0] , self.model.coef_[0,1]]) #theta[0] coef for intercept, thetas[1] coef for Xs, thetas[2] coef for Xa
 
     #set range for action space
-    self.high_th = np.array([2, 2, 2])
+    self.high_th = np.array([4, 4, 4])
    
     #set ACTION SPACE
     #space.box handles continuous action space
@@ -73,7 +73,7 @@ class UpdateEnv2(gym.Env):
     patients1= np.hstack([np.ones((self.size, 1)), self.patients]) #shape (50, 3), 1st column of 1's, 2nd columns Xs, 3rd column Xa
     rho1 = (1/(1+np.exp(-(np.matmul(patients1, action[:, None])))))  #prob of Y=1  # (sizex3) x (3x1) = (size, 1)
     rho1 = rho1.squeeze() # shape: size, individual risk
-    Xa = patients1[:, 1] # shape: size
+    Xa = patients1[:, 2] # shape: size
     g2 = ((Xa) + 0.5*((Xa)+np.sqrt(1+(Xa)**2)))*(1-rho1**2) + ((Xa) - 0.5*((Xa)+np.sqrt(1+(Xa)**2)))*(rho1**2)
     Xa = g2 # size
     
