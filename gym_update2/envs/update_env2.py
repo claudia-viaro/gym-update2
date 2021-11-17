@@ -125,11 +125,9 @@ class UpdateEnv2(gym.Env):
   def reset(self):
     self.horizon = 200
     
-    #define dataset of patients with non-actionable covariate Xs and actionable covariate Xa
-    self.patients = truncnorm.rvs(a=0, b= math.inf,size=(self.size,2)) #shape (size, 2), 1st columns is Xs, second is Xa  
-       
-    self.random_indices = np.random.choice(self.size, size=1, replace=False)
-    self.state = self.patients[self.random_indices, :].reshape(2,) 
+    #define dataset of patients with actionable covariate Xa and non-actionable covariate Xs
+    self.patients = truncnorm.rvs(a=0, b= math.inf,size=(self.size,2)) #shape (size, 2), 1st columns is Xs, second is Xa
+    self.state=self.patients
 
 
     
