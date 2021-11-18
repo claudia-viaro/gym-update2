@@ -37,7 +37,8 @@ class UpdateEnv2(gym.Env):
     
     #set OBSERVATION SPACE
     #it is made of patients
-    self.observation_space = spaces.Discrete(self.size)
+    self.observation_space = spaces.Box(low=0, high=math.inf, shape=(self.size, 2), dtype=np.float32)
+    #self.observation_space = spaces.Discrete(self.size)
     
     #set an initial state
     self.state=None 
